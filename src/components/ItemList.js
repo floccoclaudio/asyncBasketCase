@@ -10,7 +10,6 @@ const StyledItemsPage = styled('div')`
   border: 2px solid black;
   color: white;
   width: 95vw;
-
   margin: 0 auto;
   padding: 2vh 5vh 0vh 5vh;
 `
