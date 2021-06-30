@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components'
-import { useDispatch } from 'react-redux'
 import { fetchItemsList } from '../features/itemListSlice'
+
 import Container from './Container'
 import ItemCard from './ItemCard'
 //#region  styled components
 const StyledItemsPage = styled('div')`
-  border: 2px solid black;
   color: white;
   width: 95vw;
   margin: 0 auto;
@@ -44,10 +43,11 @@ const ItemList = () => {
       {inventory && (
         <Container>
           {inventory.map(props => {
-            return <ItemCard {...props} />
+            return <ItemCard {...props} key={props.id} />
           })}
         </Container>
       )}
+      {/* <StyledButton /> */}
     </StyledItemsPage>
   )
 }
