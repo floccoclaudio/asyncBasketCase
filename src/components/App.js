@@ -7,7 +7,7 @@ import ItemList from './ItemList'
 import Cart from './Cart'
 
 const StyledPageContainer = styled('div')`
-  color: white;
+  /* color: white; */
   width: 95vw;
   margin: 0 auto;
   padding: 2vh 5vh 0vh 5vh;
