@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import styled from 'styled-components'
+// import styled from 'styled-components'
 import { fetchItemsList } from '../features/itemListSlice'
 
 import Container from './Container'
