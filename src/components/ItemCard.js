@@ -1,6 +1,8 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
-
+import { addToCart } from '../features/cartSlice'
+//#region  styled components
 const StyledCard = styled('div')`
   border: 2px solid white;
   /* width: 150px;
@@ -61,8 +63,14 @@ const StyledDropown = styled('input')`
 const StyledBuyButton = styled('button')`
   /* width: 10%; */
 `
+//#endregion
 
 const ItemCard = props => {
+  const dispatch = useDispatch()
+  const addToCartHandler = () => {
+    // dispatch(addToCart(item))
+    dispatch(addToCart(props))
+  }
   return (
     <StyledCard>
       <StyledImageWrapper>
@@ -75,7 +83,13 @@ const ItemCard = props => {
         {/* <StyledItemQty >Left in stock : {props.}</StyledItemQty> */}
         <StyledFunctionsWrapper>
           <StyledDropown />
-          <StyledBuyButton>Add to cart</StyledBuyButton>
+          <StyledBuyButton
+            onClick={() => {
+              addToCartHandler(props)
+            }}
+          >
+            Add to cart
+          </StyledBuyButton>
         </StyledFunctionsWrapper>
       </StyledInfoWrapper>
     </StyledCard>
