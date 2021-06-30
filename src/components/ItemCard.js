@@ -14,7 +14,8 @@ const StyledCard = styled('div')`
   :hover {
     cursor: pointer;
   }
-` //object-fit
+  color: black;
+`
 const StyledImageWrapper = styled('div')`
   width: 100%;
   height: 45%;
@@ -27,24 +28,56 @@ const StyledImage = styled('img')`
   height: 100%;
 `
 
+const StyledInfoWrapper = styled('div')`
+  font-size: 0.8rem;
+  height: 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+`
+
+const StyledItemName = styled('div')`
+  margin-top: 3px;
+  font-weight: bold;
+`
+const StyledItemCode = styled('div')`
+  margin-top: 3px;
+  color: grey;
+`
+const StyledItemCategory = styled('div')`
+  margin-top: 3px;
+  color: grey;
+`
+// const StyledItemQty = styled('div')``
+const StyledFunctionsWrapper = styled('div')`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-right: 5px;
+`
+const StyledDropown = styled('input')`
+  width: 30%;
+`
+const StyledBuyButton = styled('button')`
+  /* width: 10%; */
+`
+
 const ItemCard = props => {
   return (
     <StyledCard>
       <StyledImageWrapper>
         <StyledImage src={props.image} />
       </StyledImageWrapper>
-
-      {/*
-    <StyledInfoWrapper >
-    <StyledItemName />
-    <StyledItemCode/>
-    <StyledItemQty/>
-    <StyledFunctionsWrapper>
-    <StyledDropown />
-    <StyledButton />
-    </StyledFunctionsWrapper>
-    </StyledInfoWrapper>
-     */}
+      <StyledInfoWrapper>
+        <StyledItemName>{props.title}</StyledItemName>
+        <StyledItemCode>Item Code : {props.id}</StyledItemCode>
+        <StyledItemCategory>Category : {props.category}</StyledItemCategory>
+        {/* <StyledItemQty >Left in stock : {props.}</StyledItemQty> */}
+        <StyledFunctionsWrapper>
+          <StyledDropown />
+          <StyledBuyButton>Add to cart</StyledBuyButton>
+        </StyledFunctionsWrapper>
+      </StyledInfoWrapper>
     </StyledCard>
   )
 }
