@@ -15,10 +15,10 @@ const StyledLink = styled(Link)`
   display: inline-block;
   cursor: pointer;
   color: #ffffff;
-  font-family: Arial;
-  font-size: 10px;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 20px;
   font-weight: bold;
-  padding: 10px 25px;
+  padding: 15px 30px;
   text-decoration: none;
   text-shadow: 0px 1px 0px #3d768a;
   :hover {
@@ -36,7 +36,7 @@ const StyledNavBar = styled.nav`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  padding: 2px;
+  padding: 10px;
 `
 //#endregion
 const Navbar = () => {
