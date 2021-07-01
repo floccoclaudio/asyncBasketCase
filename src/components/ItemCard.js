@@ -5,7 +5,7 @@ import { addToCart } from '../features/cartSlice'
 import { removeFromInventory } from '../features/itemListSlice'
 //#region  styled components
 const StyledCard = styled('div')`
-  border: 2px solid white;
+  border: 2px solid #2ec4b6;
   /* width: 150px;
   height: 180px; */
   width: 15rem;
@@ -13,9 +13,10 @@ const StyledCard = styled('div')`
   margin: 15px;
   background-color: white;
   border-radius: 10px;
-  border: 0.5px solid grey;
+
   :hover {
     cursor: pointer;
+    border: 3px solid #ff9f1c;
   }
   color: black;
 `

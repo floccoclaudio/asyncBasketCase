@@ -16,12 +16,12 @@ const StyledLogo = styled('div')`
   display: block;
   width: 5vw;
   height: 5vw;
-  border: 1px solid white;
+  border: 1px solid #2ec4b6;
   margin: 0 auto;
 `
 
 const StyledAppSeparator = styled('div')`
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid #2ec4b6;
   width: 100%;
   margin: 5vh auto;
 `
