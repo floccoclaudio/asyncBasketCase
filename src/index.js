@@ -14,7 +14,8 @@ body {
     padding:0;
     box-sizing:border-box;
   background-color: #FDFFFC;
-  color:#011627
+  color:#011627;
+  font-family:Arial, Helvetica, sans-serif
 
   }
 `
@@ -28,5 +29,3 @@ ReactDOM.render(
   </React.Fragment>,
   document.getElementById('root'),
 )
-
-//error color E71D36
