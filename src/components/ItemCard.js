@@ -42,7 +42,7 @@ const StyledItemName = styled('div')`
   margin-top: 3px;
   font-weight: bold;
 `
-const StyledItemCode = styled('div')`
+const StyledItemQty = styled('div')`
   margin-top: 3px;
   color: grey;
 `
@@ -78,7 +78,7 @@ const ItemCard = props => {
       </StyledImageWrapper>
       <StyledInfoWrapper>
         <StyledItemName>{props.title}</StyledItemName>
-        <StyledItemCode>Item Code : {props.id}</StyledItemCode>
+        <StyledItemQty>Left in stock : {props.quantity}</StyledItemQty>
         <StyledItemCategory>Category : {props.category}</StyledItemCategory>
         {/* <StyledItemQty >Left in stock : {props.}</StyledItemQty> */}
         <StyledFunctionsWrapper>
