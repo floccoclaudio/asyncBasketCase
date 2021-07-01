@@ -5,7 +5,7 @@ const initialInventoryState = {
   isItemsError: false,
   isItemsSuccess: false,
 }
-
+//commento extra
 export const fetchItemsList = createAsyncThunk(
   'itemsList/fetchItems',
   async function fetchItemsList() {

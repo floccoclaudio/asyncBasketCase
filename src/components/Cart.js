@@ -48,7 +48,7 @@ const StyledItemOfRow = styled('div')`
 //#endregion
 
 const Cart = () => {
-  const cartItems = useSelector(state => state.cartData)
+  const cartItems = useSelector(state => state.cartData.currentCart)
   return (
     <CartContainer>
       <StyledTitle>Your cart contains:</StyledTitle>
