@@ -12,7 +12,7 @@ export const fetchItemsList = createAsyncThunk(
     let response = await fetch('https://fakestoreapi.com/products/')
     response = await response.json()
     response.forEach(function (itm) {
-      itm.quantity = Math.floor(Math.random() * 20)
+      itm.quantity = Math.floor(Math.random() * 10)
     })
     return response
   },
@@ -21,7 +21,14 @@ export const fetchItemsList = createAsyncThunk(
 const itemsListSlice = createSlice({
   name: 'inventory',
   initialState: initialInventoryState,
-  reducers: {},
+  reducers: {
+    removeFromInventory: (state, action) => {
+      const selectedItem = state.inventory.find(
+        item => item.id === action.payload.id,
+      )
+      selectedItem.quantity--
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(fetchItemsList.pending, state => {
@@ -39,4 +46,5 @@ const itemsListSlice = createSlice({
   },
 })
 
+export const { removeFromInventory } = itemsListSlice.actions
 export default itemsListSlice.reducer

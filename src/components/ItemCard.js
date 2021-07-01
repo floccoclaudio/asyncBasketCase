@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { addToCart } from '../features/cartSlice'
+import { removeFromInventory } from '../features/itemListSlice'
 //#region  styled components
 const StyledCard = styled('div')`
   border: 2px solid white;
@@ -45,6 +46,9 @@ const StyledItemName = styled('div')`
 const StyledItemQty = styled('div')`
   margin-top: 3px;
   color: grey;
+  //in case we want to change class correpsonding to a prop
+  /* text-decoration: ${props =>
+    props.isAvailable ? 'initial' : 'line-through'}; */
 `
 const StyledItemCategory = styled('div')`
   margin-top: 3px;
@@ -68,9 +72,10 @@ const StyledBuyButton = styled('button')`
 const ItemCard = props => {
   const dispatch = useDispatch()
   const addToCartHandler = () => {
-    // dispatch(addToCart(item))
+    dispatch(removeFromInventory(props))
     dispatch(addToCart(props))
   }
+
   return (
     <StyledCard>
       <StyledImageWrapper>
@@ -78,12 +83,19 @@ const ItemCard = props => {
       </StyledImageWrapper>
       <StyledInfoWrapper>
         <StyledItemName>{props.title}</StyledItemName>
-        <StyledItemQty>Left in stock : {props.quantity}</StyledItemQty>
+        <StyledItemQty isAvailable={props.quantity !== 0}>
+          {props.quantity !== 0
+            ? `Left in stock : ${props.quantity}`
+            : `Sorry temporary out of stock`}
+          {/* Left in stock : {props.quantity} */}
+        </StyledItemQty>
         <StyledItemCategory>Category : {props.category}</StyledItemCategory>
         {/* <StyledItemQty >Left in stock : {props.}</StyledItemQty> */}
         <StyledFunctionsWrapper>
           <StyledDropown />
           <StyledBuyButton
+            // isAvailable={props.quantity === 0}
+            disabled={props.quantity === 0}
             onClick={() => {
               addToCartHandler(props)
             }}
