@@ -1,39 +1,42 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 const initialInventoryState = {
   inventory: [],
   isItemsLoading: false,
   isItemsError: false,
   isItemsSuccess: false,
-};
+}
 
 export const fetchItemsList = createAsyncThunk(
-  "itemsList/fetchItems",
+  'itemsList/fetchItems',
   async function fetchItemsList() {
-    let response = await fetch("https://fakestoreapi.com/products/");
-    response = await response.json();
-    return response;
-  }
-);
+    let response = await fetch('https://fakestoreapi.com/products/')
+    response = await response.json()
+    response.forEach(function (itm) {
+      itm.quantity = Math.floor(Math.random() * 20)
+    })
+    return response
+  },
+)
 
 const itemsListSlice = createSlice({
-  name: "inventory",
+  name: 'inventory',
   initialState: initialInventoryState,
   reducers: {},
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
-      .addCase(fetchItemsList.pending, (state) => {
-        state.isItemsLoading = true;
+      .addCase(fetchItemsList.pending, state => {
+        state.isItemsLoading = true
       })
       .addCase(fetchItemsList.fulfilled, (state, action) => {
-        state.isItemsLoading = false;
-        state.isItemsSuccess = true;
-        state.inventory = action.payload;
+        state.isItemsLoading = false
+        state.isItemsSuccess = true
+        state.inventory = action.payload
       })
-      .addCase(fetchItemsList, (state) => {
-        state.isItemsLoading = false;
-        state.isItemsError = true;
-      });
+      .addCase(fetchItemsList, state => {
+        state.isItemsLoading = false
+        state.isItemsError = true
+      })
   },
-});
+})
 
-export default itemsListSlice.reducer;
+export default itemsListSlice.reducer
