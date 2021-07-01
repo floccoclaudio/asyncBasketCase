@@ -1,6 +1,7 @@
+import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 import React from 'react'
-
+//#region styled components
 const CartContainer = styled('div')`
   border-radius: 10px;
   width: 100%;
@@ -44,7 +45,10 @@ const StyledItemOfRow = styled('div')`
   padding: 10px;
 `
 
+//#endregion
+
 const Cart = () => {
+  const cartItems = useSelector(state => state.cartData)
   return (
     <CartContainer>
       <StyledTitle>Your cart contains:</StyledTitle>
@@ -52,18 +56,18 @@ const Cart = () => {
         <StyledHeaderRow>
           <StyledItemOfRow>Type </StyledItemOfRow>
           <StyledItemOfRow>Code </StyledItemOfRow>
-          <StyledItemOfRow>QTY </StyledItemOfRow>
+          <StyledItemOfRow>Category </StyledItemOfRow>
           <StyledItemOfRow>Price </StyledItemOfRow>
         </StyledHeaderRow>
-        {/* {[...new Array(4)].map(l => {
-          return ( */}
-        <StyledRowContainer>
-          <StyledItemOfRow>Type </StyledItemOfRow>
-          <StyledItemOfRow>Code </StyledItemOfRow>
-          <StyledItemOfRow>QTY </StyledItemOfRow>
-          <StyledItemOfRow>Price </StyledItemOfRow>
-        </StyledRowContainer>
-        {/* })} */}
+
+        {cartItems.map(({ title, category, price, id }) => (
+          <StyledRowContainer>
+            <StyledItemOfRow>{title} </StyledItemOfRow>
+            <StyledItemOfRow>{id} </StyledItemOfRow>
+            <StyledItemOfRow>{category} </StyledItemOfRow>
+            <StyledItemOfRow>{price} </StyledItemOfRow>
+          </StyledRowContainer>
+        ))}
       </StyledCartContainer>
     </CartContainer>
   )
