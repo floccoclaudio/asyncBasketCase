@@ -55,15 +55,15 @@ const Cart = () => {
       <StyledCartContainer>
         <StyledHeaderRow>
           <StyledItemOfRow>Type </StyledItemOfRow>
-          <StyledItemOfRow>Code </StyledItemOfRow>
+          <StyledItemOfRow>Qty </StyledItemOfRow>
           <StyledItemOfRow>Category </StyledItemOfRow>
           <StyledItemOfRow>Price </StyledItemOfRow>
         </StyledHeaderRow>
 
-        {cartItems.map(({ title, category, price, id }) => (
-          <StyledRowContainer>
+        {cartItems.map(({ title, category, price, id, quantity }) => (
+          <StyledRowContainer key={id}>
             <StyledItemOfRow>{title} </StyledItemOfRow>
-            <StyledItemOfRow>{id} </StyledItemOfRow>
+            <StyledItemOfRow>{quantity} </StyledItemOfRow>
             <StyledItemOfRow>{category} </StyledItemOfRow>
             <StyledItemOfRow>{price} </StyledItemOfRow>
           </StyledRowContainer>
