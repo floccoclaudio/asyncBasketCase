@@ -6,6 +6,7 @@ const CartContainer = styled('div')`
   border-radius: 10px;
   width: 100%;
   background-color: white;
+  border: 2px solid #2ec4b6;
 `
 const StyledTitle = styled('div')`
   margin: 10px;
@@ -43,19 +44,30 @@ const StyledRowContainer = styled('div')`
 `
 const StyledItemOfRow = styled('div')`
   padding: 10px;
+  display: flex;
+  justify-content: space-between;
 `
-
+const StyledSpan = styled('span')``
+const StyledExtraAddButton = styled('button')`
+  border-radius: 50%;
+`
+const StyledTotalBox = styled(`div`)``
 //#endregion
 
 const Cart = () => {
   const cartItems = useSelector(state => state.cartData.currentCart)
+  const totalPrice = cartItems.reduce(
+    (accumulator, current) => accumulator + current.price * current.quantity,
+    0,
+  )
+
   return (
     <CartContainer>
       <StyledTitle>Your cart contains:</StyledTitle>
       <StyledCartContainer>
         <StyledHeaderRow>
           <StyledItemOfRow>Type </StyledItemOfRow>
-          <StyledItemOfRow>Qty </StyledItemOfRow>
+          <StyledItemOfRow>Qty</StyledItemOfRow>
           <StyledItemOfRow>Category </StyledItemOfRow>
           <StyledItemOfRow>Price </StyledItemOfRow>
         </StyledHeaderRow>
@@ -63,12 +75,18 @@ const Cart = () => {
         {cartItems.map(({ title, category, price, id, quantity }) => (
           <StyledRowContainer key={id}>
             <StyledItemOfRow>{title} </StyledItemOfRow>
-            <StyledItemOfRow>{quantity} </StyledItemOfRow>
+            <StyledItemOfRow>
+              {quantity}
+              <StyledSpan>
+                <StyledExtraAddButton>+</StyledExtraAddButton>
+              </StyledSpan>
+            </StyledItemOfRow>
             <StyledItemOfRow>{category} </StyledItemOfRow>
-            <StyledItemOfRow>{price} </StyledItemOfRow>
+            <StyledItemOfRow>$: {price * quantity} </StyledItemOfRow>
           </StyledRowContainer>
         ))}
       </StyledCartContainer>
+      {totalPrice}
     </CartContainer>
   )
 }
