@@ -5,7 +5,7 @@ import { addToCart } from '../features/cartSlice'
 import { removeFromInventory } from '../features/itemListSlice'
 //#region  styled components
 const StyledCard = styled('div')`
-  border: 2px solid #2ec4b6;
+  /* border: 2px solid #2ec4b6; */
   /* width: 150px;
   height: 180px; */
   width: 15rem;
@@ -16,9 +16,10 @@ const StyledCard = styled('div')`
 
   :hover {
     cursor: pointer;
-    border: 3px solid #ff9f1c;
+    border: 2px solid ${props => (props.isAvailable ? '#ff9f1c' : '#E71D36')};
   }
-  color: black;
+  border: 2px solid ${props => (props.isAvailable ? '#2ec4b6' : '#E71D36')};
+  //in case we want to change class correpsonding to a prop
 `
 const StyledImageWrapper = styled('div')`
   width: 100%;
@@ -47,9 +48,6 @@ const StyledItemName = styled('div')`
 const StyledItemQty = styled('div')`
   margin-top: 3px;
   color: grey;
-  //in case we want to change class correpsonding to a prop
-  /* text-decoration: ${props =>
-    props.isAvailable ? 'initial' : 'line-through'}; */
 `
 const StyledItemCategory = styled('div')`
   margin-top: 3px;
@@ -66,7 +64,12 @@ const StyledDropown = styled('input')`
   width: 30%;
 `
 const StyledBuyButton = styled('button')`
-  /* width: 10%; */
+  cursor: pointer;
+  box-shadow: 0px 10px 14px -7px #276873;
+  background-color: #ff9f1c;
+  font-family: 'Times New Roman', Times;
+  font-size: 15px;
+  border-radius: 8px;
 `
 //#endregion
 
@@ -78,7 +81,7 @@ const ItemCard = props => {
   }
 
   return (
-    <StyledCard>
+    <StyledCard isAvailable={props.quantity !== 0}>
       <StyledImageWrapper>
         <StyledImage src={props.image} />
       </StyledImageWrapper>

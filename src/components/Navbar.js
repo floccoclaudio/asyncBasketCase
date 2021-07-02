@@ -10,14 +10,12 @@ const StyledLink = styled(Link)`
   display: inline-block;
   cursor: pointer;
   color: #ffffff;
-  font-family: 'Times New Roman', Times, serif;
+
   font-size: 20px;
   font-weight: bold;
   padding: 15px 30px;
   text-decoration: none;
   text-shadow: 0px 1px 0px #3d768a;
-  :hover {
-  }
 `
 
 const StyledNavBar = styled.nav`
