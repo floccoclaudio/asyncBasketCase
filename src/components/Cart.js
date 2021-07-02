@@ -60,8 +60,8 @@ const Cart = () => {
           <StyledItemOfRow>Price </StyledItemOfRow>
         </StyledHeaderRow>
 
-        {cartItems.map(({ title, category, price, id: quantity }) => (
-          <StyledRowContainer>
+        {cartItems.map(({ title, category, price, id, quantity }) => (
+          <StyledRowContainer key={id}>
             <StyledItemOfRow>{title} </StyledItemOfRow>
             <StyledItemOfRow>{quantity} </StyledItemOfRow>
             <StyledItemOfRow>{category} </StyledItemOfRow>
