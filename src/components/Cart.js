@@ -22,7 +22,7 @@ const StyledHeaderRow = styled('div')`
   font-weight: bold;
   font-size: 20px;
   display: grid;
-  grid-template-columns: auto 15% 15% 15% 15%;
+  grid-template-columns: auto 15% 15% 15%;
   border-bottom: 1px solid black;
   & > * {
     &:not(:first-child) {
@@ -32,7 +32,7 @@ const StyledHeaderRow = styled('div')`
 `
 const StyledRowContainer = styled('div')`
   display: grid;
-  grid-template-columns: auto 15% 15% 15% 15%;
+  grid-template-columns: auto 15% 15% 15%;
   &:not(:last-of-type) {
     border-bottom: 1px solid black;
   }
@@ -51,7 +51,16 @@ const StyledSpan = styled('span')``
 const StyledExtraAddButton = styled('button')`
   border-radius: 50%;
 `
-const StyledTotalBox = styled(`div`)``
+const StyledTotalBoxContainer = styled(`div`)`
+  display: flex;
+  justify-content: flex-end;
+`
+const StyledTotalSpan = styled('span')`
+  border: 3px solid #2ec4b6;
+  margin: 8px 20px 15px;
+  padding: 10px 20px;
+  border-radius: 10px;
+`
 //#endregion
 
 const Cart = () => {
@@ -86,7 +95,11 @@ const Cart = () => {
           </StyledRowContainer>
         ))}
       </StyledCartContainer>
-      {totalPrice}
+      <StyledTotalBoxContainer>
+        <StyledTotalSpan>
+          Your CurrenT total is : $ {totalPrice}
+        </StyledTotalSpan>
+      </StyledTotalBoxContainer>
     </CartContainer>
   )
 }
